@@ -1,0 +1,29 @@
+{
+  "name": "sns_client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamN-nagoya/SnsClient.git"
+  },
+  "author": "yuuki1101927 <yuuki_21n1101927@nnn.ed.jp>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamN-nagoya/SnsClient/issues"
+  },
+  "homepage": "https://github.com/teamN-nagoya/SnsClient#readme",
+  "devDependencies": {
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.2",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "@types/uuid": "^8.3.1",
+    "uuid": "^8.3.2"
+  }
+}
