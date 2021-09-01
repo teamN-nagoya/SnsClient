@@ -33,11 +33,9 @@ npmを使用しています
 
 # Author
 
-作成情報を列挙する
-
-* yuuki1101927
-* teamN
-* yuuki_21n1101927@nnn.ed.jp
+* name:yuuki1101927
+* team:teamN
+* meal:yuuki_21n1101927@nnn.ed.jp
 
 # License
 チーム外秘
