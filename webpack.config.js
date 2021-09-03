@@ -1,16 +1,53 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 // モード値を production に設定すると最適化された状態で、
 // development に設定するとソースマップ有効でJSファイルが出力される
 mode: 'development', // "production" | "development" | "none"
 
+experiments: {
+    topLevelAwait: true,
+},
+
 // メインとなるJavaScriptファイル（エントリーポイント）
-entry: './ts/index.ts',
+entry: {
+    index: './ts/index.ts',
+    signin: './ts/signin.ts'
+},
 
 output: {
     path: path.join(__dirname, "dist"),
-    filename: "index.js"
+    filename: '[name].bundle.js'
+},
+
+plugins: [
+    new HtmlWebpackPlugin({
+        chunks:['index'],
+        filename: "./html/index.html",
+        template: "./html/index.html"
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['signin'],
+        filename: "./html/signin.html",
+        template: "./html/signin.html"
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['signup'],
+        filename: "./html/signup.html",
+        template: "./html/signup.html"
+    })
+],
+
+optimization: {
+    chunkIds: 'named',
+    //optimization.splitChunks の設定
+    splitChunks: {
+        // 分離されて生成される chunk の名前（任意の名前）
+        name: 'vendor',
+        // 対象とするチャンク（chunk）に含めるモジュールの種類
+        chunks: 'initial',   // または 'all'
+    }
 },
 
 module: {
