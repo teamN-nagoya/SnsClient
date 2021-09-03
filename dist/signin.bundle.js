@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _packets_c2s_LoginRequestC2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./packets/c2s/LoginRequestC2SPacket */ \"./ts/packets/c2s/LoginRequestC2SPacket.ts\");\n/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ \"./ts/util.ts\");\n\n\nconst userElement = document.getElementById(\"user_id\");\nconst passElement = document.getElementById(\"password\");\nconst errorElement = document.getElementById(\"error\");\nconst submitElement = document.getElementById(\"submit\");\nsubmitElement.addEventListener(\"click\", submit);\nasync function submit() {\n    const userName = userElement.value;\n    const passWord = passElement.value;\n    const hash = (0,_util__WEBPACK_IMPORTED_MODULE_1__.digestMessage)(passWord);\n    if (!userName) {\n        errorElement.textContent = \"ユーザーIDを入力してください。\";\n        return;\n    }\n    if (!passWord) {\n        errorElement.textContent = \"パスワードを入力してください。\";\n        return;\n    }\n    if (passWord.length < 5) {\n        errorElement.textContent = \"パスワードは5文字以上です。\";\n        return;\n    }\n    const packet = new _packets_c2s_LoginRequestC2SPacket__WEBPACK_IMPORTED_MODULE_0__.LoginRequestC2SPacket(userName, await hash);\n    console.log(packet);\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/signin.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _packets_c2s_LoginRequestC2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./packets/c2s/LoginRequestC2SPacket */ \"./ts/packets/c2s/LoginRequestC2SPacket.ts\");\n/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ \"./ts/util.ts\");\n/* harmony import */ var _webSocket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./webSocket */ \"./ts/webSocket.ts\");\n\n\n\nconst userElement = document.getElementById(\"user_id\");\nconst passElement = document.getElementById(\"password\");\nconst errorElement = document.getElementById(\"error\");\nconst submitElement = document.getElementById(\"submit\");\nsubmitElement.addEventListener(\"click\", submit);\nasync function submit() {\n    const userName = userElement.value;\n    const passWord = passElement.value;\n    const hash = (0,_util__WEBPACK_IMPORTED_MODULE_1__.digestMessage)(passWord);\n    if (!userName) {\n        errorElement.textContent = \"ユーザーIDを入力してください。\";\n        return;\n    }\n    if (!passWord) {\n        errorElement.textContent = \"パスワードを入力してください。\";\n        return;\n    }\n    if (passWord.length < 5) {\n        errorElement.textContent = \"パスワードは5文字以上です。\";\n        return;\n    }\n    const packet = new _packets_c2s_LoginRequestC2SPacket__WEBPACK_IMPORTED_MODULE_0__.LoginRequestC2SPacket(userName, await hash);\n    _webSocket__WEBPACK_IMPORTED_MODULE_2__.webSocket.send(JSON.stringify(packet));\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/signin.ts?");
 
 /***/ }),
 
@@ -47,6 +47,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"digestMessage\": () => (/* binding */ digestMessage)\n/* harmony export */ });\nasync function digestMessage(message) {\n    const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array\n    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8); // hash the message\n    const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array\n    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string\n    return hashHex;\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/util.ts?");
+
+/***/ }),
+
+/***/ "./ts/webSocket.ts":
+/*!*************************!*\
+  !*** ./ts/webSocket.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webSocket\": () => (/* binding */ webSocket)\n/* harmony export */ });\nconst webSocket = new class {\n    send(value) {\n        console.log(value);\n    }\n};\n\n\n//# sourceURL=webpack://sns_client/./ts/webSocket.ts?");
 
 /***/ })
 

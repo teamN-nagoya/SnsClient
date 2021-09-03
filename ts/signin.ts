@@ -1,5 +1,6 @@
 import { LoginRequestC2SPacket } from "./packets/c2s/LoginRequestC2SPacket"
 import { digestMessage } from "./util"
+import { webSocket } from "./webSocket"
 
 const userElement = document.getElementById("user_id") as HTMLInputElement
 const passElement = document.getElementById("password") as HTMLInputElement
@@ -27,5 +28,5 @@ async function submit() {
         return
     }
     const packet = new LoginRequestC2SPacket(userName,await hash)
-    console.log(packet)
+    webSocket.send(JSON.stringify(packet))
 }
