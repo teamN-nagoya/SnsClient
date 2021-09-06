@@ -1,3 +1,6 @@
-export abstract class C2SPacket {
-    abstract packetName:string
+export class C2SPacket {
+    _C2S: never;
+    constructor() {
+        
+    }
 }
