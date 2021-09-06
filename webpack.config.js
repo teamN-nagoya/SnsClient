@@ -14,7 +14,8 @@ experiments: {
 entry: {
     index: './ts/index.ts',
     signin: './ts/signin.ts',
-    signup: './ts/signup.ts'
+    signup: './ts/signup.ts',
+    profile: './ts/profile.ts'
 },
 
 optimization: {
@@ -48,6 +49,11 @@ plugins: [
         chunks:['signup'],
         filename: "./html/signup.html",
         template: "./html/signup.html"
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['profile'],
+        filename: "./html/profile.html",
+        template: "./html/profile.html"
     })
 ],
 
