@@ -17,8 +17,12 @@ async function submit() {
     const passWord = passElement.value
     const hash = digestMessage(passWord)
 
-    if(!userName) {
+    if(!userId) {
         errorElement.textContent = "ユーザーIDを入力してください。"
+        return
+    }
+    if(!userName) {
+        errorElement.textContent = "ユーザーネームを入力してください。"
         return
     }
     if(!passWord) {
