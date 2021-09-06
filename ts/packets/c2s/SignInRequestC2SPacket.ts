@@ -1,7 +1,7 @@
 import { C2SPacket } from "../C2SPacket";
 
 export class SignInRequestC2SPacket extends C2SPacket {
-    _signInRequestC2S:never;
+    readonly SignInRequestC2SPacketType:null = null;
     userId: string;
     passwordHash: string;
 

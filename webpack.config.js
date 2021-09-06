@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 // モード値を production に設定すると最適化された状態で、
 // development に設定するとソースマップ有効でJSファイルが出力される
-mode: 'development', // "production" | "development" | "none"
+mode: 'production', // "production" | "development" | "none"
 
 experiments: {
     topLevelAwait: true,
@@ -13,7 +13,19 @@ experiments: {
 // メインとなるJavaScriptファイル（エントリーポイント）
 entry: {
     index: './ts/index.ts',
-    signin: './ts/signin.ts'
+    signin: './ts/signin.ts',
+    signup: './ts/signup.ts'
+},
+
+optimization: {
+    chunkIds: 'named',
+    //optimization.splitChunks の設定
+    splitChunks: {
+        // 分離されて生成される chunk の名前（任意の名前）
+        name: 'vendor',
+        // 対象とするチャンク（chunk）に含めるモジュールの種類
+        chunks: 'initial',   // または 'all'
+    }
 },
 
 output: {
@@ -38,17 +50,6 @@ plugins: [
         template: "./html/signup.html"
     })
 ],
-
-optimization: {
-    chunkIds: 'named',
-    //optimization.splitChunks の設定
-    splitChunks: {
-        // 分離されて生成される chunk の名前（任意の名前）
-        name: 'vendor',
-        // 対象とするチャンク（chunk）に含めるモジュールの種類
-        chunks: 'initial',   // または 'all'
-    }
-},
 
 module: {
     rules: [{
