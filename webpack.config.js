@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 // モード値を production に設定すると最適化された状態で、
 // development に設定するとソースマップ有効でJSファイルが出力される
-mode: 'production', // "production" | "development" | "none"
+mode: 'development', // "production" | "development" | "none"
 
 experiments: {
     topLevelAwait: true,
@@ -38,22 +38,22 @@ plugins: [
     new HtmlWebpackPlugin({
         chunks:['index'],
         filename: "./html/index.html",
-        template: "./html/index.html"
+        template: "./html/index.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['signin'],
         filename: "./html/signin.html",
-        template: "./html/signin.html"
+        template: "./html/signin.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['signup'],
         filename: "./html/signup.html",
-        template: "./html/signup.html"
+        template: "./html/signup.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['profile'],
         filename: "./html/profile.html",
-        template: "./html/profile.html"
+        template: "./html/profile.html",
     })
 ],
 
