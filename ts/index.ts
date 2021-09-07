@@ -1,5 +1,1 @@
-import { digestMessage } from "./util"
-import { v4 as uuidv4 } from 'uuid';
-
-console.log(uuidv4())
-console.log(await digestMessage("a"))
+window.location.href = 'https://teamn-nagoya.github.io/SnsClient/dist/html/home.html';

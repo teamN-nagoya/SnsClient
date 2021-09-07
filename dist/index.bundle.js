@@ -1,1 +1,33 @@
-(()=>{"use strict";var r,t,e,o,n,a={729:(r,t,e)=>{e.a(r,(async r=>{var t=e(976),o=e(586);console.log(o.Z),console.log(await(0,t.x)("a")),r()}),1)},976:(r,t,e)=>{async function o(r){const t=(new TextEncoder).encode(r),e=await crypto.subtle.digest("SHA-256",t);return Array.from(new Uint8Array(e)).map((r=>r.toString(16).padStart(2,"0"))).join("")}e.d(t,{x:()=>o})},586:(r,t,e)=>{var o;e.d(t,{Z:()=>c});var n=new Uint8Array(16);function a(){if(!o&&!(o="undefined"!=typeof crypto&&crypto.getRandomValues&&crypto.getRandomValues.bind(crypto)||"undefined"!=typeof msCrypto&&"function"==typeof msCrypto.getRandomValues&&msCrypto.getRandomValues.bind(msCrypto)))throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");return o(n)}const i=/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i,p=function(r){return"string"==typeof r&&i.test(r)};for(var u=[],s=0;s<256;++s)u.push((s+256).toString(16).substr(1));const c=function(r,t,e){var o=(r=r||{}).random||(r.rng||a)();if(o[6]=15&o[6]|64,o[8]=63&o[8]|128,t){e=e||0;for(var n=0;n<16;++n)t[e+n]=o[n];return t}return function(r){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,e=(u[r[t+0]]+u[r[t+1]]+u[r[t+2]]+u[r[t+3]]+"-"+u[r[t+4]]+u[r[t+5]]+"-"+u[r[t+6]]+u[r[t+7]]+"-"+u[r[t+8]]+u[r[t+9]]+"-"+u[r[t+10]]+u[r[t+11]]+u[r[t+12]]+u[r[t+13]]+u[r[t+14]]+u[r[t+15]]).toLowerCase();if(!p(e))throw TypeError("Stringified UUID is invalid");return e}(o)}}},i={};function p(r){var t=i[r];if(void 0!==t)return t.exports;var e=i[r]={exports:{}};return a[r](e,e.exports,p),e.exports}r="function"==typeof Symbol?Symbol("webpack then"):"__webpack_then__",t="function"==typeof Symbol?Symbol("webpack exports"):"__webpack_exports__",e=r=>{r&&(r.forEach((r=>r.r--)),r.forEach((r=>r.r--?r.r++:r())))},o=r=>!--r.r&&r(),n=(r,t)=>r?r.push(t):o(t),p.a=(a,i,p)=>{var u,s,c,f=p&&[],y=a.exports,d=!0,m=!1,l=(t,e,o)=>{m||(m=!0,e.r+=t.length,t.map(((t,n)=>t[r](e,o))),m=!1)},v=new Promise(((r,t)=>{c=t,s=()=>(r(y),e(f),f=0)}));v[t]=y,v[r]=(r,t)=>{if(d)return o(r);u&&l(u,r,t),n(f,r),v.catch(t)},a.exports=v,i((a=>{if(!a)return s();var i,p;u=(a=>a.map((a=>{if(null!==a&&"object"==typeof a){if(a[r])return a;if(a.then){var i=[];a.then((r=>{p[t]=r,e(i),i=0}));var p={};return p[r]=(r,t)=>(n(i,r),a.catch(t)),p}}var u={};return u[r]=r=>o(r),u[t]=a,u})))(a);var c=new Promise(((r,e)=>{(i=()=>r(p=u.map((r=>r[t])))).r=0,l(u,i,e)}));return i.r?c:p})).then(s,c),d=!1},p.d=(r,t)=>{for(var e in t)p.o(t,e)&&!p.o(r,e)&&Object.defineProperty(r,e,{enumerable:!0,get:t[e]})},p.o=(r,t)=>Object.prototype.hasOwnProperty.call(r,t),p(729)})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./ts/index.ts":
+/*!*********************!*\
+  !*** ./ts/index.ts ***!
+  \*********************/
+/***/ (() => {
+
+eval("\nwindow.location.href = 'https://teamn-nagoya.github.io/SnsClient/dist/html/home.html';\n\n\n//# sourceURL=webpack://sns_client/./ts/index.ts?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./ts/index.ts"]();
+/******/ 	
+/******/ })()
+;
