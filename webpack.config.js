@@ -54,6 +54,11 @@ plugins: [
         chunks:['profile'],
         filename: "./html/profile.html",
         template: "./html/profile.html",
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['home'],
+        filename: "./html/home.html",
+        template: "./html/home.html",
     })
 ],
 

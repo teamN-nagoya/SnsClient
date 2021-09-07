@@ -12,15 +12,17 @@ export class MessageReturnS2CPacket extends S2CPacket {
         this.messageId = messageId
         this.message = message
     }
+}
 
-    public toHtml():Element{
-        const html =  `<div id="tweet" class="box">
-            <div id="message">${this.message}</div>
-            <div id="message_id">${this.messageId}</div>
+export function html(packet:MessageReturnS2CPacket):Element{
+    const html =  `</li>
+        <div id="tweet" class="box">
+            <div id="message">${packet.message}</div>
+            <div id="message_id">${packet.messageId}</div>
             <button id="nice">${0}</button>
-        </div>`;
-        const tempEl = document.createElement('div');
-        tempEl.innerHTML = html;
-        return tempEl.firstElementChild!!;
-    }
+        </div>
+    </li>`;
+    const tempEl = document.createElement('div');
+    tempEl.innerHTML = html;
+    return tempEl.firstElementChild!!;
 }
