@@ -15,7 +15,8 @@ entry: {
     index: './ts/index.ts',
     signin: './ts/signin.ts',
     signup: './ts/signup.ts',
-    profile: './ts/profile.ts'
+    profile: './ts/profile.ts',
+    home: './ts/home.ts'
 },
 
 optimization: {
@@ -37,38 +38,52 @@ output: {
 plugins: [
     new HtmlWebpackPlugin({
         chunks:['index'],
+        hash: true,
         filename: "./html/index.html",
         template: "./html/index.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['signin'],
+        hash: true,
         filename: "./html/signin.html",
         template: "./html/signin.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['signup'],
+        hash: true,
         filename: "./html/signup.html",
         template: "./html/signup.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['profile'],
+        hash: true,
         filename: "./html/profile.html",
-        template: "./html/profile.html",
+        template: "./html/profile.ejs",
     }),
     new HtmlWebpackPlugin({
         chunks:['home'],
+        hash: true,
         filename: "./html/home.html",
-        template: "./html/home.html",
+        template: "./html/home.ejs",
     })
 ],
 
 module: {
-    rules: [{
-    // 拡張子 .ts の場合
-    test: /\.ts$/,
-    // TypeScript をコンパイルする
-    use: 'ts-loader'
-    }]
+    rules: [
+        {
+            // 拡張子 .ts の場合
+            test: /\.ts$/,
+            // TypeScript をコンパイルする
+            use: 'ts-loader'
+        },
+        {
+            test: /\.ejs$/,
+            use: [
+                "html-loader", 
+                "ejs-plain-loader"
+            ],
+        },
+    ]
 },
 // import 文で .ts ファイルを解決するため
 resolve: {

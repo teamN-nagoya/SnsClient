@@ -2,14 +2,9 @@
 <html>
     <head>
         <title>プロフィール</title>
-    <script defer src="../profile.bundle.js?d7f93cfcf05083428718"></script></head>
+    </head>
     <body>
-        <div id="left">
-    <button id="home">Home</button>
-    <button id="profile">Profile</button>
-    <button id="setting">Setting</button>
-    <button id="post">Post</button>
-</div>
+        <%- include('./common/left.ejs') %>
         <div id="user_name">%User_Name%</div>
         <div id="user_id">%User_Id%</div>
         <button id="follow">Follow</button>
