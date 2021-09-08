@@ -40,7 +40,7 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
 }
 
 webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new MessageReturnS2CPacket("yuuki1101927","ae","俺は神だ"))
+    data : JSON.stringify(new MessageReturnS2CPacket("yuuki1101927",Date.now(),"ae","俺は神だ"))
 }))
 
 webSocket.onmessage(new MessageEvent('worker', {
