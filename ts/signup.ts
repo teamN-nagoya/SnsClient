@@ -1,6 +1,6 @@
 import { SignUpRequestC2SPacket } from "./packets/c2s/SignUpRequestC2SPacket"
-import { digestMessage } from "./util"
-import { webSocket } from "./webSocket"
+import { digestMessage } from "./common/util"
+import { webSocket } from "./common/webSocket"
 
 const userIdElement = document.getElementById("user_id") as HTMLInputElement
 const userNameElement = document.getElementById("user_name") as HTMLInputElement
@@ -10,6 +10,14 @@ const errorElement = document.getElementById("error") as HTMLLabelElement
 const submitElement = document.getElementById("submit") as HTMLButtonElement
 
 submitElement.addEventListener("click",submit)
+
+webSocket.onmessage = (event:MessageEvent<string>) => {
+    if(event.data == "Login execution!") {
+        let loc = window.location
+        loc.href = "./signin.html";
+        window.location = loc
+    }
+}
 
 async function submit() {
     const userId = userIdElement.value

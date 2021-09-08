@@ -4,8 +4,8 @@ export class TimeLineRequestC2SPacket extends C2SPacket {
     readonly TimeLineRequestC2SPacketType:null = null;
     myId: string;
 
-    constructor(userId:string) {
+    constructor(myId:string) {
         super()
-        this.myId = userId
+        this.myId = myId
     }
 }

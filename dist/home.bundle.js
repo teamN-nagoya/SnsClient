@@ -26,7 +26,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"init\": () => (/* binding */ init),\n/* harmony export */   \"homeElement\": () => (/* binding */ homeElement),\n/* harmony export */   \"profileElement\": () => (/* binding */ profileElement)\n/* harmony export */ });\nfunction init() { }\nconst homeElement = document.getElementById(\"home\");\nconst profileElement = document.getElementById(\"profile\");\nhomeElement.addEventListener(\"click\", (event) => {\n    window.location.href = './home.html';\n});\nprofileElement.addEventListener(\"click\", (event) => {\n    window.location.href = './profile.html';\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/common/left.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"init\": () => (/* binding */ init),\n/* harmony export */   \"homeElement\": () => (/* binding */ homeElement),\n/* harmony export */   \"profileElement\": () => (/* binding */ profileElement)\n/* harmony export */ });\nfunction init() { }\nconst homeElement = document.getElementById(\"home\");\nconst profileElement = document.getElementById(\"profile\");\nhomeElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./home.html${window.location.hash}`;\n});\nprofileElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./profile.html${window.location.hash}`;\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/common/left.ts?");
+
+/***/ }),
+
+/***/ "./ts/common/webSocket.ts":
+/*!********************************!*\
+  !*** ./ts/common/webSocket.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webSocket\": () => (/* binding */ webSocket)\n/* harmony export */ });\nconst webSocket = new WebSocket(\"ws:localhost:5001\");\n\n\n//# sourceURL=webpack://sns_client/./ts/common/webSocket.ts?");
 
 /***/ }),
 
@@ -36,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _webSocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./webSocket */ \"./ts/webSocket.ts\");\n/* harmony import */ var _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/s2c/MessageReturnS2CPacket */ \"./ts/packets/s2c/MessageReturnS2CPacket.ts\");\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n/* harmony import */ var _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./packets/c2s/TimeLineRequestC2SPacket */ \"./ts/packets/c2s/TimeLineRequestC2SPacket.ts\");\n\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_2__.init();\nconst timeLineRequest = new _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_3__.TimeLineRequestC2SPacket(_webSocket__WEBPACK_IMPORTED_MODULE_0__.myId);\nconsole.log(timeLineRequest);\nconst list = document.getElementById(\"tweetList\");\n_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage = (event) => {\n    const rawPacket = JSON.parse(event.data);\n    if (\"MessageReturnS2CPacketType\" in rawPacket) {\n        const packet = rawPacket;\n        list.appendChild((0,_packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.html)(packet));\n    }\n};\n_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage(new MessageEvent('worker', {\n    data: JSON.stringify(new _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.MessageReturnS2CPacket(\"yuuki1101927\", Date.now(), \"ae\", \"俺は神だ\"))\n}));\n\n\n//# sourceURL=webpack://sns_client/./ts/home.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n/* harmony import */ var _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/s2c/MessageReturnS2CPacket */ \"./ts/packets/s2c/MessageReturnS2CPacket.ts\");\n/* harmony import */ var _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./packets/c2s/TimeLineRequestC2SPacket */ \"./ts/packets/c2s/TimeLineRequestC2SPacket.ts\");\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_3__.init();\nlet hash = JSON.parse(decodeURI(location.hash.substring(1)));\nconst timeLineRequest = new _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__.TimeLineRequestC2SPacket(hash.myId);\nconsole.log(timeLineRequest);\nconst list = document.getElementById(\"tweetList\");\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage = (event) => {\n    const rawPacket = JSON.parse(event.data);\n    if (\"MessageReturnS2CPacketType\" in rawPacket) {\n        const packet = rawPacket;\n        list.appendChild((0,_packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.html)(packet));\n    }\n};\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage(new MessageEvent('worker', {\n    data: JSON.stringify(new _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.MessageReturnS2CPacket(\"yuuki1101927\", Date.now(), \"ae\", \"俺は神だ\"))\n}));\n\n\n//# sourceURL=webpack://sns_client/./ts/home.ts?");
 
 /***/ }),
 
@@ -66,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"TimeLineRequestC2SPacket\": () => (/* binding */ TimeLineRequestC2SPacket)\n/* harmony export */ });\n/* harmony import */ var _C2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../C2SPacket */ \"./ts/packets/C2SPacket.ts\");\n\nclass TimeLineRequestC2SPacket extends _C2SPacket__WEBPACK_IMPORTED_MODULE_0__.C2SPacket {\n    TimeLineRequestC2SPacketType = null;\n    myId;\n    constructor(userId) {\n        super();\n        this.myId = userId;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/c2s/TimeLineRequestC2SPacket.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"TimeLineRequestC2SPacket\": () => (/* binding */ TimeLineRequestC2SPacket)\n/* harmony export */ });\n/* harmony import */ var _C2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../C2SPacket */ \"./ts/packets/C2SPacket.ts\");\n\nclass TimeLineRequestC2SPacket extends _C2SPacket__WEBPACK_IMPORTED_MODULE_0__.C2SPacket {\n    TimeLineRequestC2SPacketType = null;\n    myId;\n    constructor(myId) {\n        super();\n        this.myId = myId;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/c2s/TimeLineRequestC2SPacket.ts?");
 
 /***/ }),
 
@@ -77,16 +87,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MessageReturnS2CPacket\": () => (/* binding */ MessageReturnS2CPacket),\n/* harmony export */   \"html\": () => (/* binding */ html)\n/* harmony export */ });\n/* harmony import */ var _S2CPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../S2CPacket */ \"./ts/packets/S2CPacket.ts\");\n\nclass MessageReturnS2CPacket extends _S2CPacket__WEBPACK_IMPORTED_MODULE_0__.S2CPacket {\n    MessageReturnS2CPacketType = null;\n    userId;\n    time;\n    messageId;\n    message;\n    constructor(userId, time, messageId, message) {\n        super();\n        this.userId = userId;\n        if (typeof time == \"number\") {\n            this.time = time;\n        }\n        else {\n            this.time = time.getTime();\n        }\n        this.messageId = messageId;\n        this.message = message;\n    }\n}\nfunction html(packet) {\n    const html = `</li>\n        <div id=\"tweet\" class=\"box\">\n            <div id=\"message\">${packet.message}</div>\n            <div id=\"message_id\">${packet.messageId}</div>\n            <button id=\"nice\">${0}</button>\n            <div id=\"time\">${new Date(packet.time).toLocaleString()}</div>\n        </div>\n    </li>`;\n    const tempEl = document.createElement('div');\n    tempEl.innerHTML = html;\n    return tempEl.firstElementChild;\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/s2c/MessageReturnS2CPacket.ts?");
-
-/***/ }),
-
-/***/ "./ts/webSocket.ts":
-/*!*************************!*\
-  !*** ./ts/webSocket.ts ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webSocket\": () => (/* binding */ webSocket),\n/* harmony export */   \"myId\": () => (/* binding */ myId)\n/* harmony export */ });\nconst webSocket = new WebSocket(\"ws:localhost:5001\");\nconst myId = \"%myId%\";\n\n\n//# sourceURL=webpack://sns_client/./ts/webSocket.ts?");
 
 /***/ })
 

@@ -13,6 +13,7 @@ experiments: {
 // メインとなるJavaScriptファイル（エントリーポイント）
 entry: {
     index: './ts/index.ts',
+    debug: './ts/debug.ts',
     signin: './ts/signin.ts',
     signup: './ts/signup.ts',
     profile: './ts/profile.ts',
@@ -41,6 +42,12 @@ plugins: [
         hash: true,
         filename: "./html/index.html",
         template: "./html/index.html",
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['debug'],
+        hash: true,
+        filename: "./html/debug.html",
+        template: "./html/debug.html",
     }),
     new HtmlWebpackPlugin({
         chunks:['signin'],

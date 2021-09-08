@@ -1,13 +1,15 @@
-import { myId, webSocket } from "./webSocket"
+import { webSocket } from "./common/webSocket"
 import { S2CPacket } from "./packets/S2CPacket"
 import { MessageReturnS2CPacket,html } from "./packets/s2c/MessageReturnS2CPacket"
-import { ProfileRequestC2SPacket } from "./packets/c2s/ProfileRequestC2SPacket"
-import * as left from "./common/left"
 import { TimeLineRequestC2SPacket } from "./packets/c2s/TimeLineRequestC2SPacket"
+import { Hash } from "./hash"
+import * as left from "./common/left"
 
 left.init()
 
-const timeLineRequest = new TimeLineRequestC2SPacket(myId)
+let hash = JSON.parse(decodeURI(location.hash.substring(1))) as Hash
+
+const timeLineRequest = new TimeLineRequestC2SPacket(hash.myId!)
 console.log(timeLineRequest)
 
 const list = document.getElementById("tweetList") as HTMLUListElement

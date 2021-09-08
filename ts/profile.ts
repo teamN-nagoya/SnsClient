@@ -1,28 +1,53 @@
-import { myId, webSocket } from "./webSocket"
+import { webSocket } from "./common/webSocket"
 import { MessagesRequestC2SPacket } from "./packets/c2s/MessagesRequestC2SPacket"
 import { S2CPacket } from "./packets/S2CPacket"
 import { MessageReturnS2CPacket,html } from "./packets/s2c/MessageReturnS2CPacket"
 import { ProfileReturnS2CPacket } from "./packets/s2c/ProfileReturnS2CPacket"
 import { ProfileRequestC2SPacket } from "./packets/c2s/ProfileRequestC2SPacket"
 import * as left from "./common/left"
+import { FollowRequestC2SPacket } from "./packets/c2s/FollowRequestC2SPacket"
+import { Hash } from "./hash"
 
 left.init()
 
-let userId = location.hash
-if(!userId) {
-    location.hash = "yuuki1101927"
-    userId = "yuuki1101927"
+const userNameElement = document.getElementById("user_name") as HTMLButtonElement
+const userIdElement = document.getElementById("user_id") as HTMLButtonElement
+const followElement = document.getElementById("follow") as HTMLButtonElement
+
+type FollowTypes = "Follow" | "Following" | "Edit Profile";
+
+let hash = JSON.parse(decodeURI(location.hash.substring(1))) as Hash
+if(!hash.userId) {
+    hash.userId = "yuuki1101927"
 }
 
-const userName = document.getElementById("user_name") as HTMLButtonElement
-const follow = document.getElementById("follow") as HTMLButtonElement
+userIdElement.textContent = hash.userId
 
-if(userId == myId) {
-    follow.textContent = "Edit Profile"
+console.log(`userId:${hash.userId},myId:${hash.myId}`)
+if(hash.userId == hash.myId) {
+    console.log("z")
+    followElement.textContent = "Edit Profile"
 }
 
-const profileRequest = new ProfileRequestC2SPacket(userId)
-const messageRequest = new MessagesRequestC2SPacket(userId)
+followElement.addEventListener("click",(event)=>{
+    const followType:FollowTypes = followElement.textContent as FollowTypes
+    const packet = new FollowRequestC2SPacket(hash.userId!,hash.myId!)
+    switch(followType) {
+        case "Follow":
+            followElement.textContent = "Following"
+            console.log(packet)
+            break;
+        case "Following":
+            followElement.textContent = "Follow"
+            console.log(packet)
+            break;
+        case "Edit Profile":
+            break;
+    }
+})
+
+const profileRequest = new ProfileRequestC2SPacket(hash.userId)
+const messageRequest = new MessagesRequestC2SPacket(hash.userId)
 console.log(profileRequest)
 console.log(messageRequest)
 
@@ -35,9 +60,9 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         list.appendChild(html(packet))
     } else if("ProfileReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as ProfileReturnS2CPacket
-        userName.textContent = packet.userName
-        if(packet.following) {
-            follow.textContent = "Following"
+        userNameElement.textContent = packet.userName
+        if(followElement.textContent != "Edit Profile") if(packet.following) {
+            followElement.textContent = "Following"
         }
     }
 }
