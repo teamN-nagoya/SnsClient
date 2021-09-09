@@ -1,14 +1,17 @@
 import { S2CPacket } from "../S2CPacket";
+import * as Common from "../../common/left"
 
 export class MessageReturnS2CPacket extends S2CPacket {
     readonly MessageReturnS2CPacketType:null = null;
+    userId: string;
     userName: string;
     time: number;
     messageId: string;
     message: string;
 
-    constructor(userName:string,time:number | Date,messageId:string,message:string) {
+    constructor(userId:string,userName:string,time:number | Date,messageId:string,message:string) {
         super()
+        this.userId = userId
         this.userName = userName
         if(typeof time == "number") {
             this.time = time
@@ -24,16 +27,16 @@ export class MessageReturnS2CPacket extends S2CPacket {
 
 
 export function html(packet:MessageReturnS2CPacket):Element{
-    const html =  `</li>
+    const html =  `
         <div id="tweet" class="box">
-            <div id="user_name">${packet.userName}</div>
+            <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
             <div id="message">${packet.message}</div>
             <div id="message_id">${packet.messageId}</div>
             <button id="nice">${0}</button>
             <div id="time">${new Date(packet.time).toLocaleString()}</div>
-        </div>
-    </li>`;
-    const tempEl = document.createElement('div');
+        </div>`;
+    const tempEl = document.createElement('li');
     tempEl.innerHTML = html;
-    return tempEl.firstElementChild!!;
+
+    return tempEl!!;
 }
