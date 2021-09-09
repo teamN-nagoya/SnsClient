@@ -2,14 +2,14 @@ import { S2CPacket } from "../S2CPacket";
 
 export class MessageReturnS2CPacket extends S2CPacket {
     readonly MessageReturnS2CPacketType:null = null;
-    userId: string;
+    userName: string;
     time: number;
     messageId: string;
     message: string;
 
-    constructor(userId:string,time:number | Date,messageId:string,message:string) {
+    constructor(userName:string,time:number | Date,messageId:string,message:string) {
         super()
-        this.userId = userId
+        this.userName = userName
         if(typeof time == "number") {
             this.time = time
         } else {
@@ -26,6 +26,7 @@ export class MessageReturnS2CPacket extends S2CPacket {
 export function html(packet:MessageReturnS2CPacket):Element{
     const html =  `</li>
         <div id="tweet" class="box">
+            <div id="user_name">${packet.userName}</div>
             <div id="message">${packet.message}</div>
             <div id="message_id">${packet.messageId}</div>
             <button id="nice">${0}</button>

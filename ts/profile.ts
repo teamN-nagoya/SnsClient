@@ -5,8 +5,9 @@ import { MessageReturnS2CPacket,html } from "./packets/s2c/MessageReturnS2CPacke
 import { ProfileReturnS2CPacket } from "./packets/s2c/ProfileReturnS2CPacket"
 import { ProfileRequestC2SPacket } from "./packets/c2s/ProfileRequestC2SPacket"
 import * as left from "./common/left"
-import { FollowRequestC2SPacket } from "./packets/c2s/FollowRequestC2SPacket"
+import { FollowC2SPacket } from "./packets/c2s/FollowC2SPacket"
 import { Hash } from "./hash"
+import { UnFollowC2SPacket } from "./packets/c2s/UnFollowC2SPacket"
 
 left.init()
 
@@ -31,22 +32,21 @@ if(hash.userId == hash.myId) {
 
 followElement.addEventListener("click",(event)=>{
     const followType:FollowTypes = followElement.textContent as FollowTypes
-    const packet = new FollowRequestC2SPacket(hash.userId!,hash.myId!)
     switch(followType) {
         case "Follow":
             followElement.textContent = "Following"
-            console.log(packet)
+            console.log(new UnFollowC2SPacket(hash.userId!,hash.myId!))
             break;
         case "Following":
             followElement.textContent = "Follow"
-            console.log(packet)
+            console.log(new FollowC2SPacket(hash.userId!,hash.myId!))
             break;
         case "Edit Profile":
             break;
     }
 })
 
-const profileRequest = new ProfileRequestC2SPacket(hash.userId)
+const profileRequest = new ProfileRequestC2SPacket(hash.myId!!,hash.userId)
 const messageRequest = new MessagesRequestC2SPacket(hash.userId)
 console.log(profileRequest)
 console.log(messageRequest)
