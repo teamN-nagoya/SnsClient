@@ -24,9 +24,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!**********************!*\
   !*** ./ts/signin.ts ***!
   \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Hash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Hash */ \"./ts/Hash.ts\");\n/* harmony import */ var _packets_c2s_SignInRequestC2SPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/c2s/SignInRequestC2SPacket */ \"./ts/packets/c2s/SignInRequestC2SPacket.ts\");\n/* harmony import */ var _common_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/util */ \"./ts/common/util.ts\");\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n\n\n\n\nconst myIdElement = document.getElementById(\"user_id\");\nconst passElement = document.getElementById(\"password\");\nconst errorElement = document.getElementById(\"error\");\nconst submitElement = document.getElementById(\"submit\");\nsubmitElement.addEventListener(\"click\", submit);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_3__.webSocket.onmessage = (event) => {\n    if (event.data == \"Login execution!\") {\n        let loc = window.location;\n        loc.href = `./home.html#${JSON.stringify(new _Hash__WEBPACK_IMPORTED_MODULE_0__.Hash(myIdElement.value, undefined))}`;\n        window.location = loc;\n    }\n};\nasync function submit() {\n    const userId = myIdElement.value;\n    const passWord = passElement.value;\n    const hash = (0,_common_util__WEBPACK_IMPORTED_MODULE_2__.digestMessage)(passWord);\n    if (!userId) {\n        errorElement.textContent = \"ユーザーIDを入力してください。\";\n        return;\n    }\n    if (!passWord) {\n        errorElement.textContent = \"パスワードを入力してください。\";\n        return;\n    }\n    if (passWord.length < 5) {\n        errorElement.textContent = \"パスワードは5文字以上です。\";\n        return;\n    }\n    myIdElement.readOnly = true;\n    passElement.readOnly = true;\n    const packet = new _packets_c2s_SignInRequestC2SPacket__WEBPACK_IMPORTED_MODULE_1__.SignInRequestC2SPacket(userId, await hash);\n    _common_webSocket__WEBPACK_IMPORTED_MODULE_3__.webSocket.send(JSON.stringify(packet));\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/signin.ts?");
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__) => {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Hash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Hash */ \"./ts/Hash.ts\");\n/* harmony import */ var _packets_c2s_SignInRequestC2SPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/c2s/SignInRequestC2SPacket */ \"./ts/packets/c2s/SignInRequestC2SPacket.ts\");\n/* harmony import */ var _common_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/util */ \"./ts/common/util.ts\");\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_common_webSocket__WEBPACK_IMPORTED_MODULE_3__]);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? await __webpack_async_dependencies__ : __webpack_async_dependencies__)[0];\n\n\n\n\nconst myIdElement = document.getElementById(\"user_id\");\nconst passElement = document.getElementById(\"password\");\nconst errorElement = document.getElementById(\"error\");\nconst submitElement = document.getElementById(\"submit\");\nsubmitElement.addEventListener(\"click\", submit);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_3__.webSocket.onmessage = (event) => {\n    if (event.data == \"Login execution!\") {\n        window.location.href = `./home.html#${JSON.stringify(new _Hash__WEBPACK_IMPORTED_MODULE_0__.Hash(myIdElement.value, undefined))}`;\n    }\n};\nasync function submit() {\n    const userId = myIdElement.value;\n    const passWord = passElement.value;\n    const hash = (0,_common_util__WEBPACK_IMPORTED_MODULE_2__.digestMessage)(passWord);\n    if (!userId) {\n        errorElement.textContent = \"ユーザーIDを入力してください。\";\n        return;\n    }\n    if (!passWord) {\n        errorElement.textContent = \"パスワードを入力してください。\";\n        return;\n    }\n    if (passWord.length < 5) {\n        errorElement.textContent = \"パスワードは5文字以上です。\";\n        return;\n    }\n    myIdElement.readOnly = true;\n    passElement.readOnly = true;\n    const packet = new _packets_c2s_SignInRequestC2SPacket__WEBPACK_IMPORTED_MODULE_1__.SignInRequestC2SPacket(userId, await hash);\n    _common_webSocket__WEBPACK_IMPORTED_MODULE_3__.webSocket.send(JSON.stringify(packet));\n}\n\n});\n\n//# sourceURL=webpack://sns_client/./ts/signin.ts?");
 
 /***/ })
 
@@ -63,6 +63,80 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Has
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackThen = typeof Symbol === "function" ? Symbol("webpack then") : "__webpack_then__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var completeQueue = (queue) => {
+/******/ 			if(queue) {
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var completeFunction = (fn) => (!--fn.r && fn());
+/******/ 		var queueFunction = (queue, fn) => (queue ? queue.push(fn) : completeFunction(fn));
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackThen]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						completeQueue(queue);
+/******/ 						queue = 0;
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 												obj[webpackThen] = (fn, reject) => (queueFunction(queue, fn), dep.catch(reject));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 								ret[webpackThen] = (fn) => (completeFunction(fn));
+/******/ 								ret[webpackExports] = dep;
+/******/ 								return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue = hasAwait && [];
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var isEvaluating = true;
+/******/ 			var nested = false;
+/******/ 			var whenAll = (deps, onResolve, onReject) => {
+/******/ 				if (nested) return;
+/******/ 				nested = true;
+/******/ 				onResolve.r += deps.length;
+/******/ 				deps.map((dep, i) => (dep[webpackThen](onResolve, onReject)));
+/******/ 				nested = false;
+/******/ 			};
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = () => (resolve(exports), completeQueue(queue), queue = 0);
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackThen] = (fn, rejectFn) => {
+/******/ 				if (isEvaluating) { return completeFunction(fn); }
+/******/ 				if (currentDeps) whenAll(currentDeps, fn, rejectFn);
+/******/ 				queueFunction(queue, fn);
+/******/ 				promise.catch(rejectFn);
+/******/ 			};
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				if(!deps) return outerResolve();
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn, result;
+/******/ 				var promise = new Promise((resolve, reject) => {
+/******/ 					fn = () => (resolve(result = currentDeps.map((d) => (d[webpackExports]))));
+/******/ 					fn.r = 0;
+/******/ 					whenAll(currentDeps, fn, reject);
+/******/ 				});
+/******/ 				return fn.r ? promise : result;
+/******/ 			}).then(outerResolve, reject);
+/******/ 			isEvaluating = false;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
 /******/ 		var deferred = [];

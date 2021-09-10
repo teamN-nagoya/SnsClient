@@ -14,9 +14,9 @@
 /*!********************!*\
   !*** ./ts/home.ts ***!
   \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n/* harmony import */ var _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/s2c/MessageReturnS2CPacket */ \"./ts/packets/s2c/MessageReturnS2CPacket.ts\");\n/* harmony import */ var _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./packets/c2s/TimeLineRequestC2SPacket */ \"./ts/packets/c2s/TimeLineRequestC2SPacket.ts\");\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n/* harmony import */ var _common_translate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/translate */ \"./ts/common/translate.ts\");\n\n\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_3__.init();\nconst timeLineRequest = new _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__.TimeLineRequestC2SPacket(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash.myId);\nconsole.log(timeLineRequest);\nconst list = document.getElementById(\"posts\");\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage = (event) => {\n    const rawPacket = JSON.parse(event.data);\n    if (\"MessageReturnS2CPacketType\" in rawPacket) {\n        const packet = rawPacket;\n        const { element, messageId } = (0,_packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.html)(packet);\n        list.appendChild(element);\n        (0,_common_translate__WEBPACK_IMPORTED_MODULE_4__.translate)(packet.message, (output) => {\n            document.getElementsByName(messageId).forEach((elem) => {\n                elem.innerHTML = output;\n            });\n        });\n        [...document.getElementsByName(\"show_profile\")]\n            .filter((value) => {\n            return value instanceof HTMLAnchorElement;\n        }).forEach((value) => {\n            value.addEventListener(\"click\", (event) => {\n                _common_left__WEBPACK_IMPORTED_MODULE_3__.hash.userId = value.id;\n                window.location.href = `./profile.html#${JSON.stringify(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash)}`;\n                location.hash = \"\";\n            });\n        });\n    }\n};\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage(new MessageEvent('worker', {\n    data: JSON.stringify(new _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.MessageReturnS2CPacket(\"chloro13827\", \"くろろ\", Date.now(), \"ae\", \"俺は神だ\"))\n}));\n\n\n//# sourceURL=webpack://sns_client/./ts/home.ts?");
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__) => {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n/* harmony import */ var _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/s2c/MessageReturnS2CPacket */ \"./ts/packets/s2c/MessageReturnS2CPacket.ts\");\n/* harmony import */ var _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./packets/c2s/TimeLineRequestC2SPacket */ \"./ts/packets/c2s/TimeLineRequestC2SPacket.ts\");\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n/* harmony import */ var _common_translate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/translate */ \"./ts/common/translate.ts\");\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_common_webSocket__WEBPACK_IMPORTED_MODULE_0__]);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? await __webpack_async_dependencies__ : __webpack_async_dependencies__)[0];\n\n\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_3__.init();\nconst timeLineRequest = new _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__.TimeLineRequestC2SPacket(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash.myId);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.send(JSON.stringify(timeLineRequest));\nconst list = document.getElementById(\"posts\");\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage = (event) => {\n    const rawPacket = JSON.parse(event.data);\n    if (\"MessageReturnS2CPacketType\" in rawPacket) {\n        const packet = rawPacket;\n        const { element, messageId } = (0,_packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.html)(packet);\n        list.appendChild(element);\n        (0,_common_translate__WEBPACK_IMPORTED_MODULE_4__.translate)(packet.message, (output) => {\n            document.getElementsByName(messageId).forEach((elem) => {\n                elem.innerHTML = output;\n            });\n        });\n        [...document.getElementsByName(\"show_profile\")]\n            .filter((value) => {\n            return value instanceof HTMLAnchorElement;\n        }).forEach((value) => {\n            value.addEventListener(\"click\", (event) => {\n                _common_left__WEBPACK_IMPORTED_MODULE_3__.hash.userId = value.id;\n                window.location.href = `./profile.html#${JSON.stringify(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash)}`;\n                location.hash = \"\";\n            });\n        });\n    }\n};\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage(new MessageEvent('worker', {\n    data: JSON.stringify(new _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.MessageReturnS2CPacket(\"chloro13827\", \"くろろ\", Date.now(), \"ae\", \"俺は神だ\"))\n}));\n\n});\n\n//# sourceURL=webpack://sns_client/./ts/home.ts?");
 
 /***/ }),
 
@@ -63,6 +63,80 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackThen = typeof Symbol === "function" ? Symbol("webpack then") : "__webpack_then__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var completeQueue = (queue) => {
+/******/ 			if(queue) {
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var completeFunction = (fn) => (!--fn.r && fn());
+/******/ 		var queueFunction = (queue, fn) => (queue ? queue.push(fn) : completeFunction(fn));
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackThen]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						completeQueue(queue);
+/******/ 						queue = 0;
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 												obj[webpackThen] = (fn, reject) => (queueFunction(queue, fn), dep.catch(reject));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 								ret[webpackThen] = (fn) => (completeFunction(fn));
+/******/ 								ret[webpackExports] = dep;
+/******/ 								return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue = hasAwait && [];
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var isEvaluating = true;
+/******/ 			var nested = false;
+/******/ 			var whenAll = (deps, onResolve, onReject) => {
+/******/ 				if (nested) return;
+/******/ 				nested = true;
+/******/ 				onResolve.r += deps.length;
+/******/ 				deps.map((dep, i) => (dep[webpackThen](onResolve, onReject)));
+/******/ 				nested = false;
+/******/ 			};
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = () => (resolve(exports), completeQueue(queue), queue = 0);
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackThen] = (fn, rejectFn) => {
+/******/ 				if (isEvaluating) { return completeFunction(fn); }
+/******/ 				if (currentDeps) whenAll(currentDeps, fn, rejectFn);
+/******/ 				queueFunction(queue, fn);
+/******/ 				promise.catch(rejectFn);
+/******/ 			};
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				if(!deps) return outerResolve();
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn, result;
+/******/ 				var promise = new Promise((resolve, reject) => {
+/******/ 					fn = () => (resolve(result = currentDeps.map((d) => (d[webpackExports]))));
+/******/ 					fn.r = 0;
+/******/ 					whenAll(currentDeps, fn, reject);
+/******/ 				});
+/******/ 				return fn.r ? promise : result;
+/******/ 			}).then(outerResolve, reject);
+/******/ 			isEvaluating = false;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
 /******/ 		var deferred = [];

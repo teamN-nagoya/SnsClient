@@ -12,10 +12,8 @@ const submitElement = document.getElementById("submit") as HTMLButtonElement
 submitElement.addEventListener("click",submit)
 
 webSocket.onmessage = (event:MessageEvent<string>) => {
-    if(event.data == "Login execution!") {
-        let loc = window.location
-        loc.href = "./signin.html";
-        window.location = loc
+    if(event.data == "SignUp execution!") {
+        window.location.href = "./signin.html";
     }
 }
 

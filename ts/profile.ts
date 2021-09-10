@@ -47,8 +47,9 @@ followElement.addEventListener("click",(event)=>{
 
 const profileRequest = new ProfileRequestC2SPacket(Common.hash.myId!!,Common.hash.userId)
 const messageRequest = new MessagesRequestC2SPacket(Common.hash.userId)
-console.log(profileRequest)
-console.log(messageRequest)
+
+webSocket.send(JSON.stringify(profileRequest))
+webSocket.send(JSON.stringify(messageRequest))
 
 const list = document.getElementById("posts") as HTMLUListElement
 
@@ -73,9 +74,9 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
 }
 
 webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new ProfileReturnS2CPacket("ゆうきくん",true))
+    data : JSON.stringify(new ProfileReturnS2CPacket("サンプル",true))
 }))
 
 webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new MessageReturnS2CPacket("chloro13827","くろろ",Date.now(),"ae","俺は神だ"))
+    data : JSON.stringify(new MessageReturnS2CPacket("sample","サンプル",Date.now(),"sample_1","俺は神だ"))
 }))

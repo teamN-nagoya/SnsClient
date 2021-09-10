@@ -13,9 +13,7 @@ submitElement.addEventListener("click",submit)
 
 webSocket.onmessage = (event:MessageEvent<string>) => {
     if(event.data == "Login execution!") {
-        let loc = window.location
-        loc.href = `./home.html#${JSON.stringify(new Hash(myIdElement.value,undefined))}`;
-        window.location = loc
+        window.location.href = `./home.html#${JSON.stringify(new Hash(myIdElement.value,undefined))}`;
     }
 }
 

@@ -340,10 +340,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!********************************!*\
   !*** ./ts/common/webSocket.ts ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webSocket\": () => (/* binding */ webSocket)\n/* harmony export */ });\nconst webSocket = new WebSocket(\"ws:localhost:5001\");\n\n\n//# sourceURL=webpack://sns_client/./ts/common/webSocket.ts?");
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__) => {\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webSocket\": () => (/* binding */ webSocket)\n/* harmony export */ });\nconst webSocket = await connect();\nfunction connect() {\n    return new Promise((resolve, reject) => {\n        const server = new WebSocket(\"ws://125.58.83.127:5001\");\n        server.onopen = function () {\n            resolve(server);\n        };\n        server.onerror = function (err) {\n            reject(err);\n        };\n    });\n}\n\n__webpack_handle_async_dependencies__();\n}, 1);\n\n//# sourceURL=webpack://sns_client/./ts/common/webSocket.ts?");
 
 /***/ }),
 

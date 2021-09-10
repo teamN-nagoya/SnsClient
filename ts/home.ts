@@ -8,7 +8,8 @@ import { translate } from "./common/translate"
 Common.init()
 
 const timeLineRequest = new TimeLineRequestC2SPacket(Common.hash.myId!)
-console.log(timeLineRequest)
+
+webSocket.send(JSON.stringify(timeLineRequest))
 
 const list = document.getElementById("posts") as HTMLUListElement
 
