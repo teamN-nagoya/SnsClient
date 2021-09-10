@@ -157,9 +157,60 @@ body {
     #postTextbox {
         height: 40vh;
         width: 50vw;
+        background-color: $offColor;
+        border: none;
     }
     #postBtn {
         height: 40vh;
         width: 10vw;
+        background-color: $onColor;
+        border: none;
+        font-size: 1.5rem;
     }
+}
+
+#setting{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20vw;
+    width: 35vw;
+    p{
+        font-size: 36px;
+        color: $textColor;
+    }
+    #changeName{
+        background: $offColor;
+        border: none;
+        height: 46px;
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    #changeProfile{
+        background: $offColor;
+        border: none;
+        font-size: 18px;
+        height: 30vh;
+        margin-bottom: 50px;
+    }
+    #changeBtn{
+        height: 5vh;
+    }
+    #changeBtn{
+        background: $onColor;
+        border: none;
+        font-size: 24px;
+    }
+}
+
+.btn{
+    background: $onColor;
+    cursor: pointer;
+    text-align: center;
+    color: $textColor;
+    transition: 0.3s;
+}
+.btn:hover{
+    background: $textColor;
+    color: $offColor;
 }

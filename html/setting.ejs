@@ -11,7 +11,16 @@
 </head>
 
 <body>
-    <%- include('./common/left.ejs') %>
+    <div id="mainContent">
+        <%- include('./common/left.ejs') %>
+        <div id="setting">
+            <p>Name</p>
+            <input id="changeName" type="text" name="" id="" placeholder="YourName">
+            <p>Profile</p>
+            <textarea id="changeProfile" name="" id="" cols="30" rows="10" placeholder="Profile"></textarea>
+            <input id="changeBtn" class="btn" type="submit" value="Decision">
+        </div>
+    </div>
 </body>
 
 </html>

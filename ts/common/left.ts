@@ -4,7 +4,7 @@ export function init():void {}
 
 export const homeElement = document.getElementById("home") as HTMLAnchorElement
 export const profileElement = document.getElementById("profile") as HTMLAnchorElement
-export const settingElement = document.getElementById("setting") as HTMLAnchorElement
+export const settingElement = document.getElementById("settings") as HTMLAnchorElement
 export const postElement = document.getElementById("post") as HTMLAnchorElement
 
 export let hash = JSON.parse(decodeURI(location.hash.substring(1))) as Hash
