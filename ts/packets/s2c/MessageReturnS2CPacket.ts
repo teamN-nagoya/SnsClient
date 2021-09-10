@@ -25,7 +25,7 @@ export class MessageReturnS2CPacket extends S2CPacket {
 
 
 
-export function html(packet:MessageReturnS2CPacket):{element:Element,messageId:string}{
+export function htmlM(packet:MessageReturnS2CPacket):{element:Element,messageId:string}{
     const html =  `
         <div class="post">
             <img class="userIcon" src=".././img/profile.svg" alt="userIcon">

@@ -1,6 +1,6 @@
 import { webSocket } from "./common/webSocket"
 import { S2CPacket } from "./packets/S2CPacket"
-import { MessageReturnS2CPacket,html } from "./packets/s2c/MessageReturnS2CPacket"
+import { MessageReturnS2CPacket,htmlM } from "./packets/s2c/MessageReturnS2CPacket"
 import { TimeLineRequestC2SPacket } from "./packets/c2s/TimeLineRequestC2SPacket"
 import * as Common from "./common/left"
 import { translate } from "./common/translate"
@@ -18,7 +18,7 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
     const rawPacket:S2CPacket = JSON.parse(event.data)
     if("MessageReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as MessageReturnS2CPacket
-        const { element,messageId } = html(packet)
+        const { element,messageId } = htmlM(packet)
         list.appendChild(element);
         translate(packet.message,(output)=>{
             document.getElementsByName(messageId).forEach((elem)=>{
