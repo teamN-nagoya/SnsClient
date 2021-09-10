@@ -72,11 +72,3 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         }
     }
 }
-
-webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new ProfileReturnS2CPacket("サンプル",true))
-}))
-
-webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new MessageReturnS2CPacket("sample","サンプル",Date.now(),"sample_1","俺は神だ"))
-}))

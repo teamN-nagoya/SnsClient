@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./ts/packets/c2s/MessageSendC2SPacket.ts":
+/*!************************************************!*\
+  !*** ./ts/packets/c2s/MessageSendC2SPacket.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MessageSendC2SPacket\": () => (/* binding */ MessageSendC2SPacket)\n/* harmony export */ });\n/* harmony import */ var _C2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../C2SPacket */ \"./ts/packets/C2SPacket.ts\");\n\nclass MessageSendC2SPacket extends _C2SPacket__WEBPACK_IMPORTED_MODULE_0__.C2SPacket {\n    MessageSendC2SPacketType = null;\n    userId;\n    message;\n    constructor(userId, message) {\n        super();\n        this.userId = userId;\n        this.message = message;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/c2s/MessageSendC2SPacket.ts?");
+
+/***/ }),
+
 /***/ "./ts/post.ts":
 /*!********************!*\
   !*** ./ts/post.ts ***!
   \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n\n_common_left__WEBPACK_IMPORTED_MODULE_0__.init();\n\n\n//# sourceURL=webpack://sns_client/./ts/post.ts?");
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__) => {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n/* harmony import */ var _packets_c2s_MessageSendC2SPacket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./packets/c2s/MessageSendC2SPacket */ \"./ts/packets/c2s/MessageSendC2SPacket.ts\");\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_common_webSocket__WEBPACK_IMPORTED_MODULE_1__]);\n_common_webSocket__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? await __webpack_async_dependencies__ : __webpack_async_dependencies__)[0];\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_0__.init();\nconst postElement = document.getElementById(\"postTextbox\");\nconst submitElement = document.getElementById(\"postBtn\");\nsubmitElement.addEventListener(\"click\", (event) => {\n    if (_common_left__WEBPACK_IMPORTED_MODULE_0__.hash.myId !== undefined) {\n        const packet = new _packets_c2s_MessageSendC2SPacket__WEBPACK_IMPORTED_MODULE_2__.MessageSendC2SPacket(_common_left__WEBPACK_IMPORTED_MODULE_0__.hash.myId, postElement.value);\n        _common_webSocket__WEBPACK_IMPORTED_MODULE_1__.webSocket.send(JSON.stringify(packet));\n    }\n});\n\n});\n\n//# sourceURL=webpack://sns_client/./ts/post.ts?");
 
 /***/ })
 
