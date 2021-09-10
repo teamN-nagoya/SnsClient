@@ -7,6 +7,7 @@ import { ProfileRequestC2SPacket } from "./packets/c2s/ProfileRequestC2SPacket"
 import { FollowC2SPacket } from "./packets/c2s/FollowC2SPacket"
 import * as Common from "./common/left"
 import { UnFollowC2SPacket } from "./packets/c2s/UnFollowC2SPacket"
+import { translate } from "./common/translate"
 
 Common.init()
 
@@ -55,7 +56,13 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
     const rawPacket:S2CPacket = JSON.parse(event.data)
     if("MessageReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as MessageReturnS2CPacket
-        list.appendChild(html(packet));
+        const { element,messageId } = html(packet)
+        list.appendChild(element);
+        translate(packet.message,(output)=>{
+            document.getElementsByName(messageId).forEach((elem)=>{
+                elem.innerHTML = output
+            })
+        });
     } else if("ProfileReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as ProfileReturnS2CPacket
         userNameElement.textContent = packet.userName

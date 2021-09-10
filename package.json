@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/teamN-nagoya/SnsClient#readme",
   "devDependencies": {
+    "@types/kuromoji": "^0.1.1",
+    "@types/uuid": "^8.3.1",
     "ejs-plain-loader": "^1.4.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
@@ -26,7 +28,8 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "@types/uuid": "^8.3.1",
+    "kuromoji": "^0.1.2",
+    "path-browserify": "^1.0.1",
     "uuid": "^8.3.2"
   }
 }

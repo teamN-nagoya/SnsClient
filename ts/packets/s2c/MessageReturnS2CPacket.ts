@@ -1,5 +1,6 @@
 import { S2CPacket } from "../S2CPacket";
 import * as Common from "../../common/left"
+import { translate } from "../../common/translate";
 
 export class MessageReturnS2CPacket extends S2CPacket {
     readonly MessageReturnS2CPacketType:null = null;
@@ -26,17 +27,16 @@ export class MessageReturnS2CPacket extends S2CPacket {
 
 
 
-export function html(packet:MessageReturnS2CPacket):Element{
+export function html(packet:MessageReturnS2CPacket):{element:HTMLElement,messageId:string}{
     const html =  `
         <div id="tweet" class="box">
             <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
-            <div id="message">${packet.message}</div>
+            <div id="message" name=${packet.messageId}>${packet.message}</div>
             <div id="message_id">${packet.messageId}</div>
             <button id="nice">${0}</button>
             <div id="time">${new Date(packet.time).toLocaleString()}</div>
         </div>`;
     const tempEl = document.createElement('li');
     tempEl.innerHTML = html;
-
-    return tempEl!!;
+    return { element:tempEl!! , messageId:packet.messageId  };
 }

@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>プロフィール</title>
-    <script defer src="../profile.bundle.js?09782113c379c67cc92a"></script></head>
+    <script defer src="../vendor.bundle.js?e4ce7c0dece04a4892e3"></script><script defer src="../profile.bundle.js?e4ce7c0dece04a4892e3"></script></head>
     <body>
         <div id="left">
     <button id="home">Home</button>
@@ -14,6 +14,13 @@
         <div id="user_id">%User_Id%</div>
         <button id="follow">Follow</button>
         <ul id="tweetList">
+        <!--<div id="tweet" class="box">
+                <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
+                <div id="message">${packet.message}</div>
+                <div id="message_id">${packet.messageId}</div>
+                <button id="nice">${0}</button>
+                <div id="time">${new Date(packet.time).toLocaleString()}</div>
+            </div>`-->
         </ul>
     </body>
 </html>

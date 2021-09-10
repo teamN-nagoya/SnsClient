@@ -100,6 +100,9 @@ resolve: {
     extensions: [
     '.ts',
     '.js' // node_modulesのライブラリ読み込みに必要
-    ]
+    ],
+    fallback: { 
+        "path": require.resolve("path-browserify") 
+    }
 }
 };
