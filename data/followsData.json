@@ -1,0 +1,36 @@
+[
+ {
+  "followerId": "null",
+  "followId": [
+   "null"
+  ]
+ },
+ {
+  "followerId": "userid",
+  "followId": [
+   "hogentyo",
+   "mogentyo"
+  ]
+ },
+ {
+  "followerId": "yuuki1101927",
+  "followId": [
+   "chloro13827",
+   "test1"
+  ]
+ },
+ {
+  "followerId": "test1",
+  "followId": [
+   "chloro13827",
+   "yuuki1101927"
+  ]
+ },
+ {
+  "followerId": "chloro13827",
+  "followId": [
+   "test1",
+   "yuuki1101927"
+  ]
+ }
+]

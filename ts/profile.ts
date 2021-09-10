@@ -59,6 +59,7 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         const packet = rawPacket as MessageReturnS2CPacket
         const { element,messageId } = htmlM(packet)
         list.appendChild(element);
+        messageSort()
         translate(packet.message,(output)=>{
             document.getElementsByName(messageId).forEach((elem)=>{
                 elem.innerHTML = output
@@ -84,4 +85,19 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
             })
         })
     }
+}
+
+function messageSort() {
+    const messageList = [...list.children]
+    const after = messageList.sort(function(a:Element,b:Element){
+        const an = parseInt(a.getAttribute("name")!!,10)
+        const bn = parseInt(b.getAttribute("name")!!,10)
+        if( an < bn ) return 1;
+        if( an > bn ) return -1;
+        return 0;
+    });
+    list.replaceChildren()
+    after.forEach((element)=>{
+        list.appendChild(element)
+    })
 }

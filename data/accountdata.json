@@ -1,0 +1,23 @@
+[
+ {},
+ {
+  "userId": "userid",
+  "userName": "namedesu",
+  "passwordHash": "pass"
+ },
+ {
+  "userId": "yuuki1101927",
+  "userName": "ゆうきくん",
+  "passwordHash": "1592220af07532c9e2252829f4831d1535a7833f801a4d43949de7fcce775a43"
+ },
+ {
+  "userId": "chloro13827",
+  "userName": "くろろ",
+  "passwordHash": "1592220af07532c9e2252829f4831d1535a7833f801a4d43949de7fcce775a43"
+ },
+ {
+  "userId": "test1",
+  "userName": "テスト",
+  "passwordHash": "1592220af07532c9e2252829f4831d1535a7833f801a4d43949de7fcce775a43"
+ }
+]
