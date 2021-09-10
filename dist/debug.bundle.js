@@ -16,7 +16,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _hash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hash */ \"./ts/hash.ts\");\n\nconst signinElement = document.getElementById(\"signin\");\nsigninElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./home.html#${JSON.stringify(new _hash__WEBPACK_IMPORTED_MODULE_0__.Hash(\"yuuki1101927\", undefined))}`;\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/debug.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Hash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Hash */ \"./ts/Hash.ts\");\n\nconst signinElement = document.getElementById(\"signin\");\nsigninElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./home.html#${JSON.stringify(new _Hash__WEBPACK_IMPORTED_MODULE_0__.Hash(\"yuuki1101927\", undefined))}`;\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/debug.ts?");
 
 /***/ })
 

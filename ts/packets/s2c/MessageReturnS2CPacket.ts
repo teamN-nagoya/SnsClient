@@ -25,16 +25,22 @@ export class MessageReturnS2CPacket extends S2CPacket {
 
 
 
-export function html(packet:MessageReturnS2CPacket):{element:HTMLElement,messageId:string}{
+export function html(packet:MessageReturnS2CPacket):{element:Element,messageId:string}{
     const html =  `
-        <div id="tweet" class="box">
-            <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
-            <div id="message" name=${packet.messageId}>${packet.message}</div>
-            <div id="message_id">${packet.messageId}</div>
-            <button id="nice">${0}</button>
-            <div id="time">${new Date(packet.time).toLocaleString()}</div>
+        <div class="post">
+            <img class="userIcon" src=".././img/profile.svg" alt="userIcon">
+            <div class="postTextBox">
+                <a class="userName" id="${packet.userId}" name="show_profile">${packet.userName}</a>
+                <p class="postText">${packet.message}</p>
+                <p id="message_id">${packet.messageId}</p>
+                <p id="time">${new Date(packet.time).toLocaleString()}</p>
+                <div class="heart">
+                    <img class="heartIcon" src=".././img/heart.svg" alt="heartIcon">
+                    <div class="heartCount">0</div>
+                </div>
+            </div>
         </div>`;
     const tempEl = document.createElement('li');
     tempEl.innerHTML = html;
-    return { element:tempEl!! , messageId:packet.messageId  };
+    return { element:tempEl!!.firstElementChild!! , messageId:packet.messageId  };
 }

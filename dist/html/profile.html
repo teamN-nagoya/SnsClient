@@ -1,26 +1,78 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="jp">
+
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.typekit.net/ioq0uqc.css">
+        <link rel="stylesheet" href="../33f48c31474db6f3edcb.css">
         <title>プロフィール</title>
-    <script defer src="../vendor.bundle.js?53fc80c1eeeaa7e0bbcc"></script><script defer src="../profile.bundle.js?53fc80c1eeeaa7e0bbcc"></script></head>
+    <script defer src="../vendor.bundle.js?68a14d76d15d813a4236"></script><script defer src="../profile.bundle.js?68a14d76d15d813a4236"></script></head>
     <body>
-        <div id="left">
-    <button id="home">Home</button>
-    <button id="profile">Profile</button>
-    <button id="setting">Setting</button>
-    <button id="post">Post</button>
-</div>
-        <div id="user_name">%User_Name%</div>
-        <div id="user_id">%User_Id%</div>
-        <button id="follow">Follow</button>
-        <ul id="tweetList">
-        <!--<div id="tweet" class="box">
-                <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
-                <div id="message">${packet.message}</div>
-                <div id="message_id">${packet.messageId}</div>
-                <button id="nice">${0}</button>
-                <div id="time">${new Date(packet.time).toLocaleString()}</div>
-            </div>`-->
+        <div id="mainContent">
+            <div id="left">
+    <div class="grovalNav">
+        <ul>
+            <li>
+                <a id="home">
+                    <img class="grovalNavIcon" src="../c955e02f822a1686c486.svg" alt="Home">
+                    <p class="grovalNavText">Home</p>
+                </a>
+            </li>
+            <li>
+                <a id="profile">
+                    <img class="grovalNavIcon" src="../3a7ff86673d4cef30389.svg" alt="Profile">
+                    <p class="grovalNavText">Profile</p>
+                </a>
+            </li>
+            <li>
+                <a id="setting">
+                    <img class="grovalNavIcon" src="../b1f3755b48407e9e6743.svg" alt="Setting">
+                    <p class="grovalNavText">Setting</p>
+                </a>
+            </li>
+            <li>
+                <a id="post">
+                    <img class="grovalNavIcon" src="../f7d838e6ba5086371d5a.svg" alt="Post">
+                    <p class="grovalNavText">Post</p>
+                </a>
+            </li>
         </ul>
+    </div>
+</div>
+            <div class="profile">
+                <div class="profileUserdata">
+                    <img class="userIcon" src="../3a7ff86673d4cef30389.svg" alt="userIcon">
+                    <div class="nameBox">
+                            <p class="userName" id="user_name">%User_Name%</p>
+                            <div id="user_id">%User_Id%</div>
+                    </div>
+                </div>
+                <button id="follow">Follow</button>
+                <div class="profileText">
+                    <div id="profile_text">%profile_text%</div>
+                    <div id="posts">
+
+                    </div>
+                </div>
+            </div>
+            <div class="follower">
+                <p class="followerText">Followers</p>
+                <div class="followUser">
+                    <img src="../3a7ff86673d4cef30389.svg" alt="follower" class="followUsericon">
+                    <p class="followUsername">
+                        follower
+                    </p>
+                </div>
+                <div class="followUser">
+                    <img src="../3a7ff86673d4cef30389.svg" alt="follower" class="followUsericon">
+                    <p class="followUsername">
+                        follower
+                    </p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

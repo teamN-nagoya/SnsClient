@@ -16,8 +16,10 @@ entry: {
     debug: './ts/debug.ts',
     signin: './ts/signin.ts',
     signup: './ts/signup.ts',
+    home: './ts/home.ts',
     profile: './ts/profile.ts',
-    home: './ts/home.ts'
+    setting: './ts/setting.ts',
+    post: './ts/post.ts'
 },
 
 optimization: {
@@ -62,16 +64,28 @@ plugins: [
         template: "./html/signup.html",
     }),
     new HtmlWebpackPlugin({
+        chunks:['home'],
+        hash: true,
+        filename: "./html/home.html",
+        template: "./html/home.ejs",
+    }),
+    new HtmlWebpackPlugin({
         chunks:['profile'],
         hash: true,
         filename: "./html/profile.html",
         template: "./html/profile.ejs",
     }),
     new HtmlWebpackPlugin({
-        chunks:['home'],
+        chunks:['setting'],
         hash: true,
-        filename: "./html/home.html",
-        template: "./html/home.ejs",
+        filename: "./html/setting.html",
+        template: "./html/setting.ejs",
+    }),
+    new HtmlWebpackPlugin({
+        chunks:['post'],
+        hash: true,
+        filename: "./html/post.html",
+        template: "./html/post.ejs",
     })
 ],
 

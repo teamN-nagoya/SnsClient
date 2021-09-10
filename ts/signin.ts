@@ -1,4 +1,4 @@
-import { Hash } from "./hash"
+import { Hash } from "./Hash"
 import { SignInRequestC2SPacket } from "./packets/c2s/SignInRequestC2SPacket"
 import { digestMessage } from "./common/util"
 import { webSocket } from "./common/webSocket"

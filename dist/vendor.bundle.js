@@ -281,6 +281,17 @@ eval("// 'path' module extracted from Node.js v8.11.1 (only the posix part)\n// 
 
 /***/ }),
 
+/***/ "./ts/Hash.ts":
+/*!********************!*\
+  !*** ./ts/Hash.ts ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Hash\": () => (/* binding */ Hash)\n/* harmony export */ });\nclass Hash {\n    HashType = null;\n    myId;\n    userId;\n    constructor(myId, userId) {\n        this.myId = myId;\n        this.userId = userId;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/Hash.ts?");
+
+/***/ }),
+
 /***/ "./ts/Packet.ts":
 /*!**********************!*\
   !*** ./ts/Packet.ts ***!
@@ -299,7 +310,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"init\": () => (/* binding */ init),\n/* harmony export */   \"homeElement\": () => (/* binding */ homeElement),\n/* harmony export */   \"profileElement\": () => (/* binding */ profileElement),\n/* harmony export */   \"hash\": () => (/* binding */ hash)\n/* harmony export */ });\nfunction init() { }\nconst homeElement = document.getElementById(\"home\");\nconst profileElement = document.getElementById(\"profile\");\nlet hash = JSON.parse(decodeURI(location.hash.substring(1)));\nlocation.hash = \"\";\nhomeElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./home.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\nprofileElement.addEventListener(\"click\", (event) => {\n    hash.userId = hash.myId;\n    window.location.href = `./profile.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/common/left.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"init\": () => (/* binding */ init),\n/* harmony export */   \"homeElement\": () => (/* binding */ homeElement),\n/* harmony export */   \"profileElement\": () => (/* binding */ profileElement),\n/* harmony export */   \"settingElement\": () => (/* binding */ settingElement),\n/* harmony export */   \"postElement\": () => (/* binding */ postElement),\n/* harmony export */   \"hash\": () => (/* binding */ hash)\n/* harmony export */ });\nfunction init() { }\nconst homeElement = document.getElementById(\"home\");\nconst profileElement = document.getElementById(\"profile\");\nconst settingElement = document.getElementById(\"setting\");\nconst postElement = document.getElementById(\"post\");\nlet hash = JSON.parse(decodeURI(location.hash.substring(1)));\nlocation.hash = \"\";\nhomeElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./home.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\nprofileElement.addEventListener(\"click\", (event) => {\n    hash.userId = hash.myId;\n    window.location.href = `./profile.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\nsettingElement.addEventListener(\"click\", (event) => {\n    window.location.href = `./setting.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\npostElement.addEventListener(\"click\", (event) => {\n    hash.userId = hash.myId;\n    window.location.href = `./post.html#${JSON.stringify(hash)}`;\n    location.hash = \"\";\n});\n\n\n//# sourceURL=webpack://sns_client/./ts/common/left.ts?");
 
 /***/ }),
 
@@ -336,17 +347,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./ts/hash.ts":
-/*!********************!*\
-  !*** ./ts/hash.ts ***!
-  \********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Hash\": () => (/* binding */ Hash)\n/* harmony export */ });\nclass Hash {\n    HashType = null;\n    myId;\n    userId;\n    constructor(myId, userId) {\n        this.myId = myId;\n        this.userId = userId;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/hash.ts?");
-
-/***/ }),
-
 /***/ "./ts/packets/C2SPacket.ts":
 /*!*********************************!*\
   !*** ./ts/packets/C2SPacket.ts ***!
@@ -376,7 +376,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MessageReturnS2CPacket\": () => (/* binding */ MessageReturnS2CPacket),\n/* harmony export */   \"html\": () => (/* binding */ html)\n/* harmony export */ });\n/* harmony import */ var _S2CPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../S2CPacket */ \"./ts/packets/S2CPacket.ts\");\n\nclass MessageReturnS2CPacket extends _S2CPacket__WEBPACK_IMPORTED_MODULE_0__.S2CPacket {\n    MessageReturnS2CPacketType = null;\n    userId;\n    userName;\n    time;\n    messageId;\n    message;\n    constructor(userId, userName, time, messageId, message) {\n        super();\n        this.userId = userId;\n        this.userName = userName;\n        if (typeof time == \"number\") {\n            this.time = time;\n        }\n        else {\n            this.time = time.getTime();\n        }\n        this.messageId = messageId;\n        this.message = message;\n    }\n}\nfunction html(packet) {\n    const html = `\n        <div id=\"tweet\" class=\"box\">\n            <button id=\"${packet.userId}\" name=\"show_profile\">${packet.userName}</button>\n            <div id=\"message\" name=${packet.messageId}>${packet.message}</div>\n            <div id=\"message_id\">${packet.messageId}</div>\n            <button id=\"nice\">${0}</button>\n            <div id=\"time\">${new Date(packet.time).toLocaleString()}</div>\n        </div>`;\n    const tempEl = document.createElement('li');\n    tempEl.innerHTML = html;\n    return { element: tempEl, messageId: packet.messageId };\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/s2c/MessageReturnS2CPacket.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MessageReturnS2CPacket\": () => (/* binding */ MessageReturnS2CPacket),\n/* harmony export */   \"html\": () => (/* binding */ html)\n/* harmony export */ });\n/* harmony import */ var _S2CPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../S2CPacket */ \"./ts/packets/S2CPacket.ts\");\n\nclass MessageReturnS2CPacket extends _S2CPacket__WEBPACK_IMPORTED_MODULE_0__.S2CPacket {\n    MessageReturnS2CPacketType = null;\n    userId;\n    userName;\n    time;\n    messageId;\n    message;\n    constructor(userId, userName, time, messageId, message) {\n        super();\n        this.userId = userId;\n        this.userName = userName;\n        if (typeof time == \"number\") {\n            this.time = time;\n        }\n        else {\n            this.time = time.getTime();\n        }\n        this.messageId = messageId;\n        this.message = message;\n    }\n}\nfunction html(packet) {\n    const html = `\n        <div class=\"post\">\n            <img class=\"userIcon\" src=\".././img/profile.svg\" alt=\"userIcon\">\n            <div class=\"postTextBox\">\n                <a class=\"userName\" id=\"${packet.userId}\" name=\"show_profile\">${packet.userName}</a>\n                <p class=\"postText\">${packet.message}</p>\n                <p id=\"message_id\">${packet.messageId}</p>\n                <p id=\"time\">${new Date(packet.time).toLocaleString()}</p>\n                <div class=\"heart\">\n                    <img class=\"heartIcon\" src=\".././img/heart.svg\" alt=\"heartIcon\">\n                    <div class=\"heartCount\">0</div>\n                </div>\n            </div>\n        </div>`;\n    const tempEl = document.createElement('li');\n    tempEl.innerHTML = html;\n    return { element: tempEl.firstElementChild, messageId: packet.messageId };\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/s2c/MessageReturnS2CPacket.ts?");
 
 /***/ }),
 

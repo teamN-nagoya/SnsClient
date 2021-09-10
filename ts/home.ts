@@ -10,7 +10,7 @@ Common.init()
 const timeLineRequest = new TimeLineRequestC2SPacket(Common.hash.myId!)
 console.log(timeLineRequest)
 
-const list = document.getElementById("tweetList") as HTMLUListElement
+const list = document.getElementById("posts") as HTMLUListElement
 
 
 webSocket.onmessage = (event:MessageEvent<string>) => {
@@ -26,9 +26,9 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         });
         [...document.getElementsByName("show_profile")]
             .filter((value)=>{
-                return value instanceof HTMLButtonElement
+                return value instanceof HTMLAnchorElement
             }).forEach((value)=>{
-                (value as HTMLButtonElement).addEventListener("click",(event)=>{
+                (value as HTMLAnchorElement).addEventListener("click",(event)=>{
                     Common.hash.userId = value.id
                     window.location.href = `./profile.html#${JSON.stringify(Common.hash)}`;
                     location.hash = ""

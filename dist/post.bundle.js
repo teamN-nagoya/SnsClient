@@ -10,23 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./ts/home.ts":
+/***/ "./ts/post.ts":
 /*!********************!*\
-  !*** ./ts/home.ts ***!
+  !*** ./ts/post.ts ***!
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_webSocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/webSocket */ \"./ts/common/webSocket.ts\");\n/* harmony import */ var _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packets/s2c/MessageReturnS2CPacket */ \"./ts/packets/s2c/MessageReturnS2CPacket.ts\");\n/* harmony import */ var _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./packets/c2s/TimeLineRequestC2SPacket */ \"./ts/packets/c2s/TimeLineRequestC2SPacket.ts\");\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n/* harmony import */ var _common_translate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/translate */ \"./ts/common/translate.ts\");\n\n\n\n\n\n_common_left__WEBPACK_IMPORTED_MODULE_3__.init();\nconst timeLineRequest = new _packets_c2s_TimeLineRequestC2SPacket__WEBPACK_IMPORTED_MODULE_2__.TimeLineRequestC2SPacket(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash.myId);\nconsole.log(timeLineRequest);\nconst list = document.getElementById(\"posts\");\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage = (event) => {\n    const rawPacket = JSON.parse(event.data);\n    if (\"MessageReturnS2CPacketType\" in rawPacket) {\n        const packet = rawPacket;\n        const { element, messageId } = (0,_packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.html)(packet);\n        list.appendChild(element);\n        (0,_common_translate__WEBPACK_IMPORTED_MODULE_4__.translate)(packet.message, (output) => {\n            document.getElementsByName(messageId).forEach((elem) => {\n                elem.innerHTML = output;\n            });\n        });\n        [...document.getElementsByName(\"show_profile\")]\n            .filter((value) => {\n            return value instanceof HTMLAnchorElement;\n        }).forEach((value) => {\n            value.addEventListener(\"click\", (event) => {\n                _common_left__WEBPACK_IMPORTED_MODULE_3__.hash.userId = value.id;\n                window.location.href = `./profile.html#${JSON.stringify(_common_left__WEBPACK_IMPORTED_MODULE_3__.hash)}`;\n                location.hash = \"\";\n            });\n        });\n    }\n};\n_common_webSocket__WEBPACK_IMPORTED_MODULE_0__.webSocket.onmessage(new MessageEvent('worker', {\n    data: JSON.stringify(new _packets_s2c_MessageReturnS2CPacket__WEBPACK_IMPORTED_MODULE_1__.MessageReturnS2CPacket(\"chloro13827\", \"くろろ\", Date.now(), \"ae\", \"俺は神だ\"))\n}));\n\n\n//# sourceURL=webpack://sns_client/./ts/home.ts?");
-
-/***/ }),
-
-/***/ "./ts/packets/c2s/TimeLineRequestC2SPacket.ts":
-/*!****************************************************!*\
-  !*** ./ts/packets/c2s/TimeLineRequestC2SPacket.ts ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"TimeLineRequestC2SPacket\": () => (/* binding */ TimeLineRequestC2SPacket)\n/* harmony export */ });\n/* harmony import */ var _C2SPacket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../C2SPacket */ \"./ts/packets/C2SPacket.ts\");\n\nclass TimeLineRequestC2SPacket extends _C2SPacket__WEBPACK_IMPORTED_MODULE_0__.C2SPacket {\n    TimeLineRequestC2SPacketType = null;\n    myId;\n    constructor(myId) {\n        super();\n        this.myId = myId;\n    }\n}\n\n\n//# sourceURL=webpack://sns_client/./ts/packets/c2s/TimeLineRequestC2SPacket.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _common_left__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/left */ \"./ts/common/left.ts\");\n\n_common_left__WEBPACK_IMPORTED_MODULE_0__.init();\n\n\n//# sourceURL=webpack://sns_client/./ts/post.ts?");
 
 /***/ })
 
@@ -164,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"home": 0
+/******/ 			"post": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -214,7 +204,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendor"], () => (__webpack_require__("./ts/home.ts")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendor"], () => (__webpack_require__("./ts/post.ts")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

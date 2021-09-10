@@ -50,7 +50,7 @@ const messageRequest = new MessagesRequestC2SPacket(Common.hash.userId)
 console.log(profileRequest)
 console.log(messageRequest)
 
-const list = document.getElementById("tweetList") as HTMLUListElement
+const list = document.getElementById("posts") as HTMLUListElement
 
 webSocket.onmessage = (event:MessageEvent<string>) => {
     const rawPacket:S2CPacket = JSON.parse(event.data)
@@ -73,9 +73,9 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
 }
 
 webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new MessageReturnS2CPacket("yuuki1101927","ゆうきくん",Date.now(),"ae","俺は神だ"))
+    data : JSON.stringify(new ProfileReturnS2CPacket("ゆうきくん",true))
 }))
 
 webSocket.onmessage(new MessageEvent('worker', {
-    data : JSON.stringify(new ProfileReturnS2CPacket("ゆうきくん",true))
+    data : JSON.stringify(new MessageReturnS2CPacket("chloro13827","くろろ",Date.now(),"ae","俺は神だ"))
 }))

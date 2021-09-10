@@ -1,21 +1,49 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="jp">
+
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.typekit.net/ioq0uqc.css">
+        <link rel="stylesheet" href=".././style/main.css">
         <title>プロフィール</title>
     </head>
     <body>
-        <%- include('./common/left.ejs') %>
-        <div id="user_name">%User_Name%</div>
-        <div id="user_id">%User_Id%</div>
-        <button id="follow">Follow</button>
-        <ul id="tweetList">
-        <!--<div id="tweet" class="box">
-                <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
-                <div id="message">${packet.message}</div>
-                <div id="message_id">${packet.messageId}</div>
-                <button id="nice">${0}</button>
-                <div id="time">${new Date(packet.time).toLocaleString()}</div>
-            </div>`-->
-        </ul>
+        <div id="mainContent">
+            <%- include('./common/left.ejs') %>
+            <div class="profile">
+                <div class="profileUserdata">
+                    <img class="userIcon" src=".././img/profile.svg" alt="userIcon">
+                    <div class="nameBox">
+                            <p class="userName" id="user_name">%User_Name%</p>
+                            <div id="user_id">%User_Id%</div>
+                    </div>
+                </div>
+                <button id="follow">Follow</button>
+                <div class="profileText">
+                    <div id="profile_text">%profile_text%</div>
+                    <div id="posts">
+
+                    </div>
+                </div>
+            </div>
+            <div class="follower">
+                <p class="followerText">Followers</p>
+                <div class="followUser">
+                    <img src=".././img/profile.svg" alt="follower" class="followUsericon">
+                    <p class="followUsername">
+                        follower
+                    </p>
+                </div>
+                <div class="followUser">
+                    <img src=".././img/profile.svg" alt="follower" class="followUsericon">
+                    <p class="followUsername">
+                        follower
+                    </p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

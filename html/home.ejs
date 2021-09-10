@@ -1,19 +1,22 @@
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="jp">
+
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.typekit.net/ioq0uqc.css">
+        <link rel="stylesheet" href=".././style/main.css">
         <title>タイムライン</title>
     </head>
     <body>
-        <%- include('./common/left.ejs') %>
-        <ul id="tweetList">
-        <!--<div id="tweet" class="box">
-                <button id="${packet.userId}" name="show_profile">${packet.userName}</button>
-                <div id="message">${packet.message}</div>
-                <div id="message_id">${packet.messageId}</div>
-                <button id="nice">${0}</button>
-                <div id="time">${new Date(packet.time).toLocaleString()}</div>
-            </div>`-->
-        </ul>
+        <div id="mainContent">
+            <%- include('./common/left.ejs') %>
+            <div id="posts">
+
+            </div>
+        </div>
     </body>
 </html>
 

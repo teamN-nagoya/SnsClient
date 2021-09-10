@@ -1,4 +1,4 @@
-import { Hash } from "./hash";
+import { Hash } from "./Hash";
 
 const signinElement = document.getElementById("signin") as HTMLButtonElement
 
