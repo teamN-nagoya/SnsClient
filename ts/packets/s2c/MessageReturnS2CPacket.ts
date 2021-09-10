@@ -1,6 +1,4 @@
 import { S2CPacket } from "../S2CPacket";
-import * as Common from "../../common/left"
-import { translate } from "../../common/translate";
 
 export class MessageReturnS2CPacket extends S2CPacket {
     readonly MessageReturnS2CPacketType:null = null;

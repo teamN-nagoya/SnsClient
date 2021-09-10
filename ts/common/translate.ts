@@ -1,7 +1,7 @@
 import kuromoji from "kuromoji"
 
 // この builder が辞書やら何やらをみて、形態素解析機を造ってくれるオブジェクトです。ここで辞書があるパスを指定。今回は kuromoji.js 標準の辞書があるディレクトリを指定。
-const builderI  = kuromoji.builder({dicPath: 'dict'})
+const builderI  = kuromoji.builder({dicPath: '../dict'})
 
 export function translate(input:string,calc:(output:string)=>void) {
     analysis(input,calc)
