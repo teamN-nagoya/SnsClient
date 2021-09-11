@@ -31,7 +31,7 @@ export function htmlM(packet:MessageReturnS2CPacket):{element:Element,messageId:
             <img class="userIcon" src=".././img/profile.svg" alt="userIcon">
             <div class="postTextBox">
                 <a class="userName" id="${packet.userId}" name="show_profile">${packet.userName}</a>
-                <p class="postText">${packet.message}</p>
+                <p class="postText" name="${packet.messageId}">${packet.message}</p>
                 <p id="message_id">${packet.messageId}</p>
                 <p id="time">${new Date(packet.time).toLocaleString()}</p>
                 <div class="heart">
