@@ -57,8 +57,6 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
     const rawPacket:S2CPacket = JSON.parse(event.data)
     if("MessageReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as MessageReturnS2CPacket
-        const { element,messageId } = htmlM(packet)
-        list.appendChild(element);
         translate(packet.message,(output)=>{
             packet.message = output
             const { element,messageId } = htmlM(packet)
