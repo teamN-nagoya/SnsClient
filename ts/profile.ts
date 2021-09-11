@@ -59,11 +59,11 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         const packet = rawPacket as MessageReturnS2CPacket
         const { element,messageId } = htmlM(packet)
         list.appendChild(element);
-        messageSort()
         translate(packet.message,(output)=>{
-            document.getElementsByName(messageId).forEach((elem)=>{
-                elem.innerHTML = output
-            })
+            packet.message = output
+            const { element,messageId } = htmlM(packet)
+            list.appendChild(element);
+            messageSort();
         });
     } else if("ProfileReturnS2CPacketType" in rawPacket) {
         const packet = rawPacket as ProfileReturnS2CPacket

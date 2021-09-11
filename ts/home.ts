@@ -20,13 +20,12 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
         const packet = rawPacket as MessageReturnS2CPacket
         const { element,messageId } = htmlM(packet)
         list.appendChild(element);
-        messageSort()
         translate(packet.message,(output)=>{
-            document.getElementsByName(messageId).forEach((elem)=>{
-                elem.innerHTML = output
-            })
-        });
-        [...document.getElementsByName("show_profile")]
+            packet.message = output
+            const { element,messageId } = htmlM(packet)
+            list.appendChild(element);
+            messageSort();
+            [...document.getElementsByName("show_profile")]
             .filter((value)=>{
                 return value instanceof HTMLAnchorElement
             }).forEach((value)=>{
@@ -36,6 +35,7 @@ webSocket.onmessage = (event:MessageEvent<string>) => {
                     location.hash = ""
                 })
             })
+        });
     }
 }
 
